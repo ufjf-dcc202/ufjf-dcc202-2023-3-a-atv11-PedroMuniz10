@@ -1,38 +1,42 @@
 
-import { adicionarNaLista, getLista, limparLista } from "./lista.js";
 
-// passo 1 - ache os elementos importantes
+import{ getLista,adicionaNaLista,limpaLista} from"./lista.js";
+const pEntrada=document.querySelector("#entrada");
+const btnAdicionar=document.querySelector("#adicionar");
+const btnLimpar=document.querySelector("#limpar");
+const olItens=document.querySelector("#itens");
 
-const pEntrada = document.querySelector('#entrada');
-const olSaida = document.querySelector('#itens');
-const btnAdicionar = document.querySelector('#adicionar');
-const btnLimpar = document.querySelector('#limpar');
+atualizarListaOrdenada();
 
-btnLimpar.addEventListener('click', limparElementosDaLista);
-btnAdicionar.addEventListener('click', criarElementoNaLista);
+btnAdicionar.addEventListener("click",adicionaItemDeEntrada); 
 
-atualizarItensDeLista();
+btnLimpar.addEventListener("click",limpaListaOrdenada);
 
-function limparElementosDaLista(){
-    limparLista();
-    atualizarItensDeLista();
+function limpaListaOrdenada(){
+    limpaLista();
+    atualizarListaOrdenada();
 }
 
-function criarElementoNaLista(){
-    const texto = pEntrada.textContent;
-    adicionarNaLista(texto);
-    atualizarItensDeLista;
-    pEntrada.textContent="";
-    pEntrada.focus();
+function adicionaItemDeEntrada(){
+    const valor = pEntrada.textContent;
+    adicionaNaLista(valor);
+    pEntrada.textContent = "";
+    atualizarListaOrdenada();
 }
 
-function atualizarItensDeLista() {
-    olSaida.innerHTML = "";
-    const lista = getLista();
-    for (let i = 0; i < lista.length; i++){
-        const item = lista[i];
-        const li = document.createElement('li');
-        li.textContent = item;
-        olSaida.appendChild(li);
+function atualizarListaOrdenada(){
+const lista=getLista();
+olItens.innerHTML="";
+    for(let i=0;i< lista.length;i++){
+        adicionaElementoNaListaOrdenada(lista[i]);
     }
+}
+    
+
+
+function adicionaElementoNaListaOrdenada(texto){
+
+    const li=document.createElement("li");
+    li.textContent=texto;
+    olItens.appendChild(li);
 }
