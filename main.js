@@ -1,7 +1,7 @@
 
 import { adicionarNaLista, getLista, limparLista } from "./lista.js";
 
-// passo 1 - acahe os elementos importantes
+// passo 1 - ache os elementos importantes
 
 const pEntrada = document.querySelector('#entrada');
 const olSaida = document.querySelector('#itens');
